@@ -1,45 +1,27 @@
 <div class="container-fluid mootimetercontainer {{{containerclasses}}}">
     <div class="row">
-        <div class=" mootimetercolpages col-lg-1 col-md-2 col-sm-3 col-xs-12 ">
-            <div style="">
-                <ul style="list-style-type: none">
-                    {{#pages}}
-                        <li>
-                            <form action="" method="get" class="">
-                                <input type="hidden" name="id" value="{{cmid}}">
-                                <input type="hidden" name="pageid" value="{{pageid}}">
-                                <span class="badge badge-primary mootimeter_margin_top_5">
-                                    {{sortorder}}
-                                </span>
-                                <button type="submit" class="btn border rounded"
-                                        style="max-height: 80px; max-width: 150px; min-height: 80px; min-width: 150px;">
-                                    <div class="pb-2">
-                                        <img src="{{{pix}}}" width="100%" style="margin: 0 auto;height: 40px">
-                                        <p>{{title}}</p>
-                                    </div>
-                                </button>
-                            </form>
-                        </li>
-                    {{/pages}}
-                </ul>
-                {{#isediting}}
-                    <form action="view.php" method="post" class="padding-left-5">
-                        <input type="hidden" name="id" value="{{cmid}}">
-                        <input type="hidden" name="a" value="addpage">
-                        <button type="submit"
-                                class="btn-success btn {{mootimetercard}} mootimetercardleftcol mootimeterpage"
-                                style="height: 40px">
-                            {{#str}} addpage, mod_mootimeter {{/str}}
-                        </button>
-                    </form>
-                {{/isediting}}
-            </div>
+        <div class="mootimetercol mootimetercolpages">
+            {{#pages}}
+                <div>
+                    <span class="badge badge-primary mt-1">
+                        {{sortorder}}
+                    </span>
+                    <a href="?id={{cmid}}&pageid={{pageid}}" class="btn border rounded" style="width: 150px">
+                        <img src="{{{pix}}}" width="100%" style="margin: 0 auto;height: 40px">
+                        <span>{{title}}</span>
+                    </a>
+                </div>
+            {{/pages}}
+            {{#isediting}}
+                <a href="?id={{cmid}}&a=addpage" class="btn btn-success {{mootimetercard}} mootimeterpage">
+                    {{#str}} addpage, mod_mootimeter {{/str}}
+                </a>
+            {{/isediting}}
         </div>
 
         {{#isediting}}
-            <div class=" mootimetercoledit {{{mootimetercoledit}}} col-lg-2 col-sm-9 col-md-3 col-xs-12 border-right">
+            <div class="mootimetercol mootimetercoledit">
                 {{#settings}}
-                    <hr>
                     <div class="mootimetersettings mootimeterfullwidth">
                         {{{settings}}}
                     </div>
@@ -47,7 +29,7 @@
             </div>
         {{/isediting}}
 
-        <div class="mootimetercolcontent {{#isediting}}col-lg-9  col-md-7{{/isediting}}{{^isediting}}col-lg-11 col-md-11{{/isediting}} col-sm-12 col-xs-12">
+        <div class="mootimetercol mootimetercolcontent">
             {{#has_result}}
                 <div>
                     <a href={{{redirect_result}}}>{{{redirect_string}}}</a>
