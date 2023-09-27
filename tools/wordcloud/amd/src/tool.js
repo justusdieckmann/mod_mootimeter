@@ -14,6 +14,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 import SuperTool from "mod_mootimeter/tool";
+import * as Util from "mod_mootimeter/util";
 
 /**
  * Super class for tools.
@@ -31,6 +32,7 @@ export default class Tool extends SuperTool {
      */
     // eslint-disable-next-line no-unused-vars,no-empty-function
     render() {
+        Util.renderTemplate('mootimetertool_wordcloud/view_content', {});
     }
 
 }
